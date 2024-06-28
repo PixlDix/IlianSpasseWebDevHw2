@@ -1,0 +1,135 @@
+<div class = "GPA">
+    <h1 id="GPA"></h1>
+</div>
+
+<script>
+    const A_GRADE = 4;
+    const B_PLUS_GRADE = 3.5;
+    const B_GRADE = 3.0;
+    const C_PLUS_GRADE = 2.5;
+    const C_GRADE = 2.0;
+    const D_GRADE = 1.0;
+    const F_GRADE = 0.0;
+    
+    var gpa = 0; //final GPA
+    var totalCourseCredits = 0; //sum of all the credits
+    var totalCredits = 0; //total credits after being multiplied by the grade point
+    
+    var courseCredits = 0; //credits for one course
+    var courseGrade = 0; //grade for one course
+</script>
+
+<% for(var i = 0; i < users.length; i++) { %>
+<script>
+    //for(var i = 0; i < '<%- users.length%>'; i++){
+        courseCredits = Number('<%- users[i].credits%>');
+        courseGrade = '<%- users[i].courseGrade %>'.toUpperCase()
+        if(courseGrade == "A"){
+            totalCredits += courseCredits * A_GRADE;
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "B+"){
+            totalCredits += courseCredits * B_PLUS_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "B"){
+            totalCredits += courseCredits * B_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "C+"){
+            totalCredits += courseCredits * C_PLUS_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "C"){
+            totalCredits += courseCredits * C_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "D"){
+            totalCredits += courseCredits * D_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "F"){
+            totalCredits += courseCredits * F_GRADE
+            totalCourseCredits += courseCredits;
+        }
+        console.log('<%- i%>');
+        console.log(totalCredits, totalCourseCredits)
+    //}
+    </script>
+<% } %>
+    
+<script>
+    //formula: sum(grade points * credits) / total credits
+    console.log(totalCredits, totalCourseCredits);
+    gpa = totalCredits/totalCourseCredits;
+    console.log(gpa)
+    document.getElementById("GPA").innerHTML = "GPA: " + Math.round(gpa * 100) / 100;
+
+</script>
+
+
+<!--
+
+<script>
+        var a = 1;
+        const A_GRADE = 4;
+        const B_PLUS_GRADE = 3.5;
+        const B_GRADE = 3.0;
+        const C_PLUS_GRADE = 2.5;
+        const C_GRADE = 2.0;
+        const D_GRADE = 1.0;
+        const F_GRADE = 0.0;
+        
+        var gpa = 0; //final GPA
+        var totalCourseCredits = 0; //sum of all the credits
+        var totalCredits = 0; //total credits after being multiplied by the grade point
+        
+        var courseCredits = 0; //credits for one course
+        var courseGrade = 0; //grade for one course
+</script>
+
+<% for(var i = 0; i < users.length; i++) { %>
+    <h1 id = "courseGrade"><%= users[i].courseGrade %></h1>
+    <h1 id = "courseCredits"><%= users[i].credits %></h1>
+
+    <script>
+        document.getElementById("courseCredits").innerHTML;
+        console.log(totalCredits);
+        courseCredits = Number(document.getElementById("courseCredits").innerHTML);
+        courseGrade = document.getElementById("courseGrade").innerHTML.toUpperCase();
+        if(courseGrade == "A"){
+            console.log(" hey " + courseCredits)
+            console.log(A_GRADE)
+            totalCredits += courseCredits * A_GRADE;
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "B+"){
+            console.log("what's up")
+            totalCredits += courseCredits * B_PLUS_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "B"){
+            totalCredits += courseCredits * B_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "C+"){
+            totalCredits += courseCredits * C_PLUS_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "C"){
+            totalCredits += courseCredits * C_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "D"){
+            totalCredits += courseCredits * D_GRADE
+            totalCourseCredits += courseCredits;
+        } else if(courseGrade == "F"){
+            totalCredits += courseCredits * F_GRADE
+            totalCourseCredits += courseCredits;
+        }
+        console.log(totalCredits);
+    </script>
+<% } %>
+
+
+
+
+<% for(var i = 0; i < users.length; i++) { %>
+    
+    <%= i + 1 %>
+    <%= users[i].courseName %>
+    <%= users[i].courseGrade %>
+    <%= users[i].credits %>
+<% } %>
+
+-->
+
